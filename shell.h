@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
-ssize_t prompt(int argc, __attribute__((unused))char *argv[]);
+ssize_t prompt();
+char *_strtok(char *input, char *delim);
 
 #endif /*SHELL_H*/

@@ -1,17 +1,27 @@
 #include "shell.h"
 
-ssize_t prompt(int argc, __attribute__((unused))char *argv[])
+ssize_t prompt()
 {
-	char *line = NULL;
+	char *prompt = "Root@User$ ";
+	char *lineptr;
 	size_t len = 0;
+	ssize_t char_read;
 
 	
-	while(argc != -1)
+	while(1)
 	{
-		printf("$ ");
-		getline(&line, &len, stdin);
+		printf("%s", prompt);
+		char_read = getline(&lineptr, &len, stdin);
+		if(char_read == -1)
+		{
+			printf("EXiting the Shell.....\n");
+			return (-1);
+		}
+
+		printf("%s\n", lineptr);
+
+		free(lineptr);
 	}
 
-	free(line);
-	exit(EXIT_SUCCESS);
+	return (0);
 }
