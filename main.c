@@ -3,12 +3,18 @@
 int main()
 {
 	char *command_line;
-	/*char *tokenizecmd;*/
+	char **tokenizedcmd;
+	int i;
 	while(1)
 	{
 		command_line = prompt();
-		printf("The Command is %s", command_line);
-	}
-	/*tokenizecmd = _strtok(command_line);*/
+		tokenizedcmd = _strtok(command_line);
+
+		for (i = 0; tokenizedcmd[i] != NULL; i++)
+		{
+			printf("%s",tokenizedcmd[i]);
+		}
+
+	}	
 	return(0);
 }

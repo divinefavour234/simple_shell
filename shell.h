@@ -7,6 +7,6 @@
 #include <string.h>
 
 char *prompt();
-char *_strtok(char *input);
+char **_strtok(char *input);
 
 #endif /*SHELL_H*/

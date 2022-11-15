@@ -1,26 +1,30 @@
 #include "shell.h"
 
-char **_strtok(char *input)
+int main(void)
 {
-	int charnum, num_token, i;
-	char *cmdinput, *token, *cmdinput_copy;
+	int charnum;
+       	int num_token; 
+	int i;
+	char *cmdinput;
+       	char *token; 
+	char *cmdinput_copy;
 	const char *delim;
 	char **Argv;
-
+	printf("reached here 1");
 	charnum = 0;
 	i = 0;
 	num_token = 0;
 	delim = " \n";
-	cmdinput = input;
+	cmdinput = "input agjg fs fp";
 	while (cmdinput[charnum] != '\0')
 	{
 		i++;
 	}
-
+	printf("reached here 2");
 	cmdinput_copy = malloc(sizeof (char) * charnum);
 
 	strcpy(cmdinput_copy, cmdinput);
-
+	printf("reached here 3");
 	token = strtok(cmdinput, delim);
 	while (token != NULL)
 	{
@@ -28,7 +32,7 @@ char **_strtok(char *input)
 		token = strtok(NULL, delim);
 	}
 	num_token++;
-	
+	printf("reached here 4");
 	Argv = malloc(sizeof(char *) * num_token);
 
 	token = strtok(cmdinput_copy, delim);
@@ -36,9 +40,14 @@ char **_strtok(char *input)
 	for (i = 0; token != NULL; i++)
 	{
 		Argv[i] = malloc(sizeof (char) * strlen(token));
+		printf("Toke is %s", token);
 		strcpy(Argv[i], token);
 		token = strtok(NULL, delim);
 	}
-	Argv[i] = NULL;
-	return (Argv);
+
+	for (i = 0; Argv[i] != NULL; i++)
+        {
+                printf("%s",Argv[i]);
+        }
+
 }
