@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <string.h>
 
-ssize_t prompt();
-char *_strtok(char *input, char *delim);
+char *prompt();
+char *_strtok(char *input);
 
 #endif /*SHELL_H*/

@@ -1,27 +1,35 @@
 #include "shell.h"
 
-ssize_t prompt()
+char *prompt()
 {
-	char *prompt = "Root@User$ ";
-	char *lineptr;
+	char *myprompt = "$ ";
+	char *cmdline = NULL;
+	char *cmdline_copy = NULL;
 	size_t len = 0;
 	ssize_t char_read;
-
-	
 	while(1)
 	{
-		printf("%s", prompt);
-		char_read = getline(&lineptr, &len, stdin);
+
+		printf("%s", myprompt);
+		char_read = getline(&cmdline, &len, stdin);
 		if(char_read == -1)
 		{
 			printf("EXiting the Shell.....\n");
-			return (-1);
+			exit(EXIT_SUCCESS);
 		}
 
-		printf("%s\n", lineptr);
+		cmdline_copy = malloc(sizeof(char) * char_read);
+		if (cmdline_copy == NULL)
+		{
+			perror("Memory Allocation Failed");
+			exit(EXIT_SUCCESS);
+		}
 
-		free(lineptr);
+		strcpy(cmdline_copy, cmdline);
+
+
+		return (cmdline_copy);
 	}
-
-	return (0);
+		free(cmdline);
+		free(cmdline_copy);
 }
