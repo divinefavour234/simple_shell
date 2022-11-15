@@ -6,15 +6,16 @@ char **_strtok(char *input)
 	char *cmdinput, *token, *cmdinput_copy;
 	const char *delim;
 	char **Argv;
+	int tokenlength;
 
 	charnum = 0;
 	i = 0;
 	num_token = 0;
-	delim = " \n";
+	delim = " ";
 	cmdinput = input;
 	while (cmdinput[charnum] != '\0')
 	{
-		i++;
+		charnum++;
 	}
 
 	cmdinput_copy = malloc(sizeof (char) * charnum);
@@ -35,7 +36,8 @@ char **_strtok(char *input)
 
 	for (i = 0; token != NULL; i++)
 	{
-		Argv[i] = malloc(sizeof (char) * strlen(token));
+		tokenlength = strlen(token);
+		Argv[i] = malloc(sizeof (char) * tokenlength);
 		strcpy(Argv[i], token);
 		token = strtok(NULL, delim);
 	}
