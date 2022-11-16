@@ -1,4 +1,11 @@
 #include "shell.h"
+/**
+ * main - Entry of the program
+ * @argc: The number of argument passed
+ * @argv: An array of string
+ *
+ * Return: always success(0)
+ */
 
 int main(int argc, char **argv)
 {
@@ -8,14 +15,13 @@ int main(int argc, char **argv)
 	char **argvcopy;
 	int j, i;
 
-	argvcopy = malloc(sizeof (char *) * (argc));
-	for ( j = 1; j < argc; j++)
+	argvcopy = malloc(sizeof(char *) * (argc));
+	for (j = 1; j < argc; j++)
 	{
 		argvcopy[j] = argv[j];
 	}
 	argvcopy[j] = "\n";
-	
-	while(1)
+	while (1)
 	{
 		if (argc >= 1)
 		{
@@ -27,8 +33,6 @@ int main(int argc, char **argv)
 			tokenizedcmd = _strtok(command_line);
 			cmdline = tokenizedcmd;
 		}
-			
-
 	}
-	return(0);
+	return (0);
 }

@@ -1,12 +1,16 @@
 #include "shell.h"
-
+/**
+ * _strtok - tokenize inputs from cmd line
+ * @input: An array of character that will be tokenized
+ * Return: It returns An array of string that
+ * has been tokenized
+ */
 char **_strtok(char *input)
 {
-	int charnum, num_token, i;
+	int charnum, num_token, i, tokenlength;
 	char *cmdinput, *token, *cmdinput_copy;
 	const char *delim;
 	char **Argv;
-	int tokenlength;
 
 	charnum = 0;
 	i = 0;
@@ -17,11 +21,8 @@ char **_strtok(char *input)
 	{
 		charnum++;
 	}
-
-	cmdinput_copy = malloc(sizeof (char) * charnum);
-
+	cmdinput_copy = malloc(sizeof(char) * charnum);
 	strcpy(cmdinput_copy, cmdinput);
-
 	token = strtok(cmdinput, delim);
 	while (token != NULL)
 	{
@@ -29,19 +30,15 @@ char **_strtok(char *input)
 		token = strtok(NULL, delim);
 	}
 	num_token++;
-	
 	Argv = malloc(sizeof(char *) * num_token);
-
 	token = strtok(cmdinput_copy, delim);
-
 	for (i = 0; token != NULL; i++)
 	{
 		tokenlength = strlen(token);
-		Argv[i] = malloc(sizeof (char) * tokenlength);
+		Argv[i] = malloc(sizeof(char) * tokenlength);
 		strcpy(Argv[i], token);
 		token = strtok(NULL, delim);
 	}
 	Argv[i] = NULL;
-
 	return (Argv);
 }
