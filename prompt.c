@@ -17,18 +17,18 @@ char *prompt()
 	while (1)
 	{
 
-		printf("%s", myprompt);
+		_puts(myprompt);
 		char_read = getline(&cmdline, &len, stdin);
 		if (char_read == -1)
 		{
-			printf("EXiting the Shell.....\n");
+			_puts("EXiting the Shell.....\n");
 			exit(EXIT_SUCCESS);
 		}
 
 		cmdline_copy = malloc(sizeof(char) * char_read);
 		if (cmdline_copy == NULL)
 		{
-			perror("Memory Allocation Failed");
+			_puts("Memory Allocation Failed");
 			exit(EXIT_SUCCESS);
 		}
 

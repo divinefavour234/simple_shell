@@ -1,4 +1,4 @@
 #!/bin/bash
 
-gcc -Werror -Wextra -Wall -pedantic -std=gnu89 *.c -o hsh && ./hsh
+gcc -Werror -Wextra -Wall -pedantic -std=gnu89 *.c -o shell && ./shell
 
