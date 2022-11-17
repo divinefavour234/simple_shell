@@ -4,7 +4,7 @@ This project is carried out by Ojo Divine-Favour Damilare and Alfiyya Musa.
 
 The project is about the implementation of a simple shell,and also about collaborating and coding as a team.
 
-Learning Objectives
+The Learning Objectives
 Who designed and implemented the original Unix operating system
 Who wrote the first version of the UNIX shell
 Who invented the B programming language (the direct predecessor to the C programming language)
