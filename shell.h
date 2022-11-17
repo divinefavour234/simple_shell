@@ -17,5 +17,7 @@ char **_strtok(char *input);
 void _puts(char *str);
 int _putchar(char c);
 
+/*string helper*/
+char *_strcpy(char *dest, char *src);
 
 #endif /*SHELL_H*/

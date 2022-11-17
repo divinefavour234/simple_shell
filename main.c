@@ -23,13 +23,19 @@ int main(int argc, char **argv)
 		argvcopy[i] = argv[j];
 		i++;
 	}
-	argvcopy[j] = "\n";
 	while (1)
 	{
-		command_line = prompt();
-		tokenizedcmd = _strtok(command_line);
-		cmdline = tokenizedcmd;
-
+		if (argc >= 2)
+		{
+			cmdline = argvcopy;
+			argc = 0;
+		}
+		else
+		{
+			command_line = prompt();
+			tokenizedcmd = _strtok(command_line);
+			cmdline = tokenizedcmd;
+		}
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -40,14 +46,15 @@ int main(int argc, char **argv)
 		if (child_pid == 0)
 		{
 			sleep(1);
+			if (execve(cmdline[0], cmdline, NULL) == -1)
+                {
+                        perror("./shell");
+                }
+
 		}
 		else
 		{
 			wait(&status);
-		}
-		if (execve(cmdline[0], cmdline, NULL) == -1)
-		{
-			perror("./shell");
 		}
 	}
 	return (0);
