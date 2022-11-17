@@ -39,6 +39,6 @@ char **_strtok(char *input)
 		strcpy(Argv[i], token);
 		token = strtok(NULL, delim);
 	}
-	Argv[i] = NULL;
+	/*Argv[i] = NULL;*/
 	return (Argv);
 }
