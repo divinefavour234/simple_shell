@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 		}
 		if (child_pid == 0)
 		{
-			sleep(2);
+			sleep(1);
 			if (execve(cmdline[0], cmdline, NULL) == -1)
 				perror("./shell");
 		}
