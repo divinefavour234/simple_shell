@@ -17,6 +17,7 @@ char **_strtok(char *input)
 		return (NULL);
 	av = malloc((wordcount + 1) * sizeof(char *));
 	if (av == NULL)
+		_puts("Memory Allocation Failure");
 		exit(1);
 	token = strtok(input, delimiter);
 	while (token != NULL)
