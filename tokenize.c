@@ -7,38 +7,25 @@
  */
 char **_strtok(char *input)
 {
-	int charnum, num_token, i, tokenlength;
-	char *cmdinput, *token, *cmdinput_copy;
-	const char *delim;
-	char **Argv;
-
-	charnum = 0;
-	i = 0;
-	num_token = 0;
-	delim = " ";
-	cmdinput = input;
-	while (cmdinput[charnum] != '\0')
-	{
-		charnum++;
-	}
-	cmdinput_copy = malloc(sizeof(char) * charnum);
-	strcpy(cmdinput_copy, cmdinput);
-	token = strtok(cmdinput, delim);
+	char *token;
+	int i = 0, wordcount = 0;
+	char *delimiter = " \n";
+	char **av;
+    
+    	wordcount = _splitstring(input);
+	if (!wordcount)
+		return (NULL);
+	av = malloc((wordcount + 1) * sizeof(char *));
+	if (av == NULL)
+		exit(1);
+	token = strtok(input, delimiter);
 	while (token != NULL)
 	{
-		num_token++;
-		token = strtok(NULL, delim);
-	}
-	num_token++;
-	Argv = malloc(sizeof(char *) * num_token);
-	token = strtok(cmdinput_copy, delim);
-	for (i = 0; token != NULL; i++)
-	{
-		tokenlength = strlen(token);
-		Argv[i] = malloc(sizeof(char) * tokenlength);
-		strcpy(Argv[i], token);
-		token = strtok(NULL, delim);
-	}
-	Argv[i] = NULL;
-	return (Argv);
+		av[i] = _strdup(token);
+		token = strtok(NULL, delimiter);
+		i++;
+    	}
+	av[i] = NULL;
+	return (av);
+	free(av);
 }
