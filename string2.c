@@ -10,6 +10,7 @@ char *_strdup(char *str)
 {
 	int i;
 	char *dest_str;
+
 	if (str == NULL)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
@@ -35,7 +36,7 @@ int _splitstring(char *str)
 	int i;
 	int searchflag = 1;
 	int wordcount = 0;
-	
+
 	for (i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ' && searchflag == 1)
@@ -80,7 +81,7 @@ char *_strcat(char *dest, char *src)
 {
 	int i;
 	int j;
-	
+
 	for (i = 0; dest[i] != '\0'; i++)
 		;
 	for (j = 0; src[j] != '\0'; j++, i++)
@@ -98,6 +99,7 @@ char *_strcat(char *dest, char *src)
 int _strlen(char *s)
 {
 	int i;
+
 	for (i = 0; s[i]; i++)
 		;
 	return (i);

@@ -9,10 +9,7 @@
 
 int main(int argc, char **argv)
 {
-	char *command_line;
-	char **tokenizedcmd;
-	char **cmdline;
-	char **argvcopy;
+	char **tokenizedcmd, **cmdline, **argvcopy;
 	int j, status;
 	int i = 0;
 	pid_t child_pid = child_pid;
@@ -32,30 +29,23 @@ int main(int argc, char **argv)
 		}
 		else
 		{
-			command_line = prompt();
-			tokenizedcmd = _strtok(command_line);
+			tokenizedcmd = _strtok(prompt());
 			cmdline = tokenizedcmd;
 		}
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-
 			perror("Error:");
 			return (1);
 		}
 		if (child_pid == 0)
 		{
-			sleep(1);
+			sleep(2);
 			if (execve(cmdline[0], cmdline, NULL) == -1)
-                {
-                        perror("./shell");
-                }
-
+				perror("./shell");
 		}
 		else
-		{
 			wait(&status);
-		}
 	}
 	return (0);
 }

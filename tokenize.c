@@ -11,21 +11,23 @@ char **_strtok(char *input)
 	int i = 0, wordcount = 0;
 	char *delimiter = " \n";
 	char **av;
-    
-    	wordcount = _splitstring(input);
+
+	wordcount = _splitstring(input);
 	if (!wordcount)
 		return (NULL);
 	av = malloc((wordcount + 1) * sizeof(char *));
 	if (av == NULL)
+	{
 		_puts("Memory Allocation Failure");
 		exit(1);
+	}
 	token = strtok(input, delimiter);
 	while (token != NULL)
 	{
 		av[i] = _strdup(token);
 		token = strtok(NULL, delimiter);
 		i++;
-    	}
+	}
 	av[i] = NULL;
 	return (av);
 	free(av);
