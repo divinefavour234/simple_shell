@@ -9,30 +9,43 @@
 
 int main(int argc, char **argv)
 {
-	char *command_line;
-	char **tokenizedcmd;
-	char **cmdline;
-	char **argvcopy;
-	int j, i;
+	char **tokenizedcmd, **cmdline, **argvcopy;
+	int j, status;
+	int i = 0;
+	pid_t child_pid = child_pid;
 
 	argvcopy = malloc(sizeof(char *) * (argc));
-	for (j = 1; j < argc; j++)
+	for (j = 1; j <= argc; j++)
 	{
-		argvcopy[j] = argv[j];
+		argvcopy[i] = argv[j];
+		i++;
 	}
-	argvcopy[j] = "\n";
 	while (1)
 	{
-		if (argc >= 1)
+		if (argc >= 2)
 		{
 			cmdline = argvcopy;
+			argc = 0;
 		}
 		else
 		{
-			command_line = prompt();
-			tokenizedcmd = _strtok(command_line);
+			tokenizedcmd = _strtok(prompt());
 			cmdline = tokenizedcmd;
 		}
+		child_pid = fork();
+		if (child_pid == -1)
+		{
+			perror("Error:");
+			return (1);
+		}
+		if (child_pid == 0)
+		{
+			sleep(1);
+			if (execve(cmdline[0], cmdline, NULL) == -1)
+				perror("./shell");
+		}
+		else
+			wait(&status);
 	}
 	return (0);
 }

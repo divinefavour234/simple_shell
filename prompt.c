@@ -14,29 +14,25 @@ char *prompt()
 	size_t len = 0;
 	ssize_t char_read;
 
-	while (1)
-	{
-
 		_puts(myprompt);
 		char_read = getline(&cmdline, &len, stdin);
 		if (char_read == -1)
 		{
-			_puts("EXiting the Shell.....\n");
-			exit(EXIT_SUCCESS);
+			/*_puts(\"Exiting the Shell.....\n\");*/
+			exit(1);
 		}
 
 		cmdline_copy = malloc(sizeof(char) * char_read);
 		if (cmdline_copy == NULL)
 		{
 			_puts("Memory Allocation Failed");
-			exit(EXIT_SUCCESS);
+			exit(1);
 		}
 
-		strcpy(cmdline_copy, cmdline);
-
+		_strcpy(cmdline_copy, cmdline);
 
 		return (cmdline_copy);
-	}
+
 		free(cmdline);
 		free(cmdline_copy);
 }
