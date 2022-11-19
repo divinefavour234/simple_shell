@@ -18,7 +18,7 @@ char *prompt()
 		char_read = getline(&cmdline, &len, stdin);
 		if (char_read == -1)
 		{
-			/*_puts(\"Exiting the Shell.....\n\");*/
+			_puts("Exiting the Shell.....\n");
 			exit(1);
 		}
 
